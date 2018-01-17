@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.minas.bonus.client.ClientActiyity"
+    android:weightSum="10">
+
+    <LinearLayout
+        android:layout_weight="4"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:weightSum="3">
+
+        <ImageView
+            android:id="@+id/barCode_image"
+            android:layout_weight="1.5"
+            android:src="@mipmap/scanner"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <LinearLayout
+            android:gravity="center"
+            android:layout_weight="1.5"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="@string/username"
+                android:id="@+id/username_client"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="@string/phone"
+                android:id="@+id/phone_client"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="@string/email"
+                android:id="@+id/email_client"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <ListView
+        android:background="@drawable/client"
+        android:scrollbarStyle="outsideInset"
+        style="@style/Base.Widget.AppCompat.ListView.DropDown"
+        android:id="@+id/bonuslist_id"
+        android:layout_weight="5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+    </ListView>
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="0dp">
+        <Button
+            android:background="@drawable/mybutton"
+            android:onClick="logout"
+            android:text="@string/logout"
+            android:layout_marginHorizontal="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    
+</LinearLayout>

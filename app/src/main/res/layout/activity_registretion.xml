@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:backgroundTint="@color/colorPrimary"
+    android:background="@drawable/registration"
+    android:orientation="horizontal"
+    android:layout_margin="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="3"
+    tools:context="com.example.minas.bonus.register.RegistretionActivity">
+
+    <LinearLayout
+        android:layout_weight="0.5"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"></LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:weightSum="10"
+        android:orientation="vertical"
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+        <ImageView
+
+
+            android:layout_marginTop="10dp"
+            android:layout_weight="2"
+            android:src="@mipmap/scanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_margin="5dp"
+                android:background="@drawable/mybutton"
+                android:layout_marginVertical="10dp"
+                android:onClick="Scan"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="@string/scan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:layout_margin="5dp"
+                android:background="@drawable/mybutton"
+                android:onClick="Registration"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="@string/registration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="0.5"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Бонус</string>
+    <string name="username">Имя пользователя</string>
+    <string name="Password">Пароль</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="logout">Выйти</string>
+    <string name="scan">сканирование</string>
+    <string name="registration">запись</string>
+    <string name="language">Язык</string>
+    <string name="help">помощь</string>
+    <string name="settings">Настройки</string>
+    <string name="amount">Количество</string>
+    <string name="save">Сохранить</string>
+    <string name="remember_me">Запомни меня</string>
+    <string name="Client">Клиент</string>
+    <string name="seller">Продавец</string>
+    <string name="login">Вход</string>
+    <string name="Select">"Выберите язык "</string>
+    <string name="required">"обязательный "</string>
+    <string name="theirnamealreadyinuse">"это имя уже используется "</string>
+    <string name="wrongusername">"Неверное имя пользователя "</string>
+    <string name="wrongpassword">"неправильный пароль "</string>
+    <string name="help_me">О программе. Он имеет два доступных ваучера и как продавец позвольте клиенту получить стенд для его отправки, который позже сможет использовать его и дать продавцу возможность разместить бонусную систему в своем магазине.Программа была написана Саргисом Минасяном.</string>
+    <string name="checkyourbonuses">"Проверьте свои бонусы "</string>
+    <string name="clickheretoread">"Нажмите здесь, чтобы прочитать "</string>
+
+</resources>

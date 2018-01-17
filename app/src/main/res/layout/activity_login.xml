@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/logo"
+    android:layout_width="match_parent"
+    android:layout_marginVertical="20dp"
+    android:layout_height="match_parent"
+    tools:context="com.example.minas.bonus.LoginActivity">
+
+    <LinearLayout
+
+        android:weightSum="20"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_edittext"
+            android:hint="@string/username"
+            android:id="@+id/username_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:inputType="text" />
+
+        <EditText
+            android:background="@drawable/rounded_edittext"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:hint="@string/Password"
+            android:id="@+id/password_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+        <RadioGroup
+
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+
+                android:buttonTint="@color/green"
+                android:id="@+id/Customer_login"
+                android:text="@string/seller"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:buttonTint="@color/green"
+
+                android:id="@+id/client_login"
+                android:checked="true"
+                android:text="@string/Client"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <CheckBox
+
+                android:buttonTint="@color/green"
+                android:id="@+id/remember_me"
+                android:text="@string/remember_me"
+                android:layout_gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+
+        <Button
+            android:padding="15dp"
+            android:background="@drawable/mybutton"
+            android:layout_marginHorizontal="70dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="login"
+            android:text="@string/login" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Բոնուս</string>
+    <string name="username">"Օգտագործողի անունը "</string>
+    <string name="Password">Գաղտնաբառ</string>
+    <string name="email">Email</string>
+    <string name="phone">Հեռախոսահամար</string>
+    <string name="logout">Ելք</string>
+    <string name="scan">Ստուգել</string>
+    <string name="registration">Գրանցում</string>
+    <string name="language">Լեզու</string>
+    <string name="help">Օգնություն</string>
+    <string name="settings">Կարգավորումներ</string>
+    <string name="amount">Գումարը</string>
+    <string name="save">պահպանել</string>
+    <string name="remember_me">"Հիշել ինձ "</string>
+    <string name="Client">Հաճախորդ</string>
+    <string name="seller">Վաճառող</string>
+    <string name="login">Մուտք</string>
+    <string name="Select">"Ընտրեք լեզուն "</string>
+    <string name="required">պարտադիր</string>
+    <string name="theirnamealreadyinuse">"այս անունը արդեն օգտագործվում է "</string>
+    <string name="wrongusername">"սխալ անունը "</string>
+    <string name="wrongpassword">"սխալ գաղտնաբառ "</string>
+    <string name="help_me">Ծրագիր մասին։ ՈՒնի մուտքի երկու հնարավորուտըւն որպես հաճախորդ և որպես վաճառող հաճախորդին թույլ է տալիս ստանալ իր առևտրի դիմաց բոնուս որը հետագայում կկարողանա օգտագործել իսկ վաճառողին տույլ է տալիս իր ----խանութում մտցնել բոնուսաըին համակարգ։Ծրագիրը գրվել է Սարգիս Մինասյանի կողմից։</string>
+    <string name="checkyourbonuses">Ստուգեք դզեր բոնուսները</string>
+    <string name="clickheretoread">"Սեղմեք այստեղ կարդալու համար "</string>
+
+</resources>
