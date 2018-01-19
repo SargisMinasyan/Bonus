@@ -25,5 +25,11 @@
     <string name="help_me">About the program. It has two accessible vouchers and as a salesman allow the customer to get a booth for his shipment, which will later be able to use it and give the seller a chance to put the bonus system in his shop.The program was written by Sargis Minasyan.</string>
     <string name="checkyourbonuses">Check your bonuses!</string>
     <string name="clickheretoread">Click here to read</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 
 </resources>

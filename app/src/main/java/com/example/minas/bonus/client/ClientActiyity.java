@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,6 +23,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -61,20 +63,26 @@ public class ClientActiyity extends AppCompatActivity {
     ClientAdapter clientAdapter;
     public static final String Length = "length";
     List<Bonus> list;
-
-
+    Client client=new Client();
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("");
+        progressDialog = new ProgressDialog(ClientActiyity.this);
+        progressDialog.setMessage("Loading..."); // Setting Message
+        progressDialog.setMax(100); // Progress Dialog Max Value
+
+        progressDialog.setTitle("Progressing"); // Setting Title
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+        progressDialog.show(); // Display Progress Dialog
+        progressDialog.setCancelable(false);
         setContentView(R.layout.activity_client);
         imageView = (ImageView) findViewById(R.id.barCode_image);
         username = (TextView) findViewById(R.id.username_client);
         email = (TextView) findViewById(R.id.email_client);
         phone = (TextView) findViewById(R.id.phone_client);
         bonus_list = (ListView) findViewById(R.id.bonuslist_id);
-        list = new ArrayList<>();
-
 
         ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -102,39 +110,44 @@ public class ClientActiyity extends AppCompatActivity {
         }
         APIService apiService = ApiUtils.getAPIService();
 
-        if(App.getInstance().sPref.getString(USERNAME,null)!=null) {
+        String clientString= (String)App.getInstance().sPref.getString(LoginActivity.CLIENT,null);
+        Client client1=new Gson().fromJson(clientString,Client.class);
 
-            configuration(apiService);
-
-        }else {
-
-            Gson gson=new Gson();
-            ResponsePOJO<Client> client= gson.fromJson((JsonElement) getIntent().getExtras().get(LoginActivity.CLIENT),ResponsePOJO.class);
-
-
-        }
-        scheduleNotification(getNotification("check your page"), 170000000);
-
-
-    }
-
-
-    public void configuration(APIService apiService){
-        apiService.getClientInfo(App.getInstance().sPref.getString(LoginActivity.USERNAME, null)).enqueue(new Callback<ResponsePOJO<Client>>() {
+        apiService.getClientInfo(client1.getUsername()).enqueue(new Callback<ResponsePOJO<Client>>() {
             @Override
             public void onResponse(Call<ResponsePOJO<Client>> call, Response<ResponsePOJO<Client>> response) {
                 if (response.body().getStatus().equals("200")) {
-                    list = response.body().getObject().getBonuses();
-                    username.setText(response.body().getObject().getUsername());
-                    email.setText(response.body().getObject().getEmail());
-                    phone.setText(response.body().getObject().getPhone());
+
+                    client=response.body().getObject();
+                    list = client.getBonuses();
+                    username.setText(client.getUsername());
+                    phone.setText(client.getPhone());
+                    email.setText(client.getEmail());
                     List<UserDataAndAmount> userDataAndAmountList = new ArrayList<>();
                     for (int i = 0; i < list.size(); i++) {
                         userDataAndAmountList.add(new UserDataAndAmount(list.get(i).getData() + "", list.get(i).getAmount() + " bonus"));
                     }
                     clientAdapter = new ClientAdapter(ClientActiyity.this, userDataAndAmountList);
                     bonus_list.setAdapter(clientAdapter);
+                    QRCodeWriter writer = new QRCodeWriter();
+                    try {
+                        BitMatrix bitMatrix = writer.encode(username.getText().toString(), BarcodeFormat.QR_CODE, 512, 512);
+                        int width = bitMatrix.getWidth();
+                        int height = bitMatrix.getHeight();
+                        Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
+                        for (int x = 0; x < width; x++) {
+                            for (int y = 0; y < height; y++) {
+                                bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
+                            }
+                        }
+                        imageView.setImageBitmap(bmp);
 
+                    } catch (WriterException e) {
+                        e.printStackTrace();
+                    }
+                    scheduleNotification(getNotification("check your page"), 170000000);
+
+                    progressDialog.dismiss();
                 }
             }
 
@@ -144,24 +157,8 @@ public class ClientActiyity extends AppCompatActivity {
             }
         });
 
-
-        QRCodeWriter writer = new QRCodeWriter();
-        try {
-            BitMatrix bitMatrix = writer.encode(App.getInstance().sPref.getString(USERNAME, null), BarcodeFormat.QR_CODE, 512, 512);
-            int width = bitMatrix.getWidth();
-            int height = bitMatrix.getHeight();
-            Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
-                    bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
-                }
-            }
-            imageView.setImageBitmap(bmp);
-
-        } catch (WriterException e) {
-            e.printStackTrace();
-        }
     }
+
     public void logout(View view) {
         Intent intent = new Intent(ClientActiyity.this, LoginActivity.class);
 

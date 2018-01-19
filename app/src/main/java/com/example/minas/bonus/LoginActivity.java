@@ -260,7 +260,8 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     Gson gson=new Gson();
                     Intent intent = new Intent(LoginActivity.this, ClientActiyity.class);
-                    intent.putExtra(CLIENT,gson.toJson(response.body().getObject()));
+                    App.getInstance().ed.putString(CLIENT, gson.toJson(response.body().getObject()));
+                    App.getInstance().ed.commit();
                     startActivity(intent);
                     finish();
 
